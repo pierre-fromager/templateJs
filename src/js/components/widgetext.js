@@ -10,12 +10,10 @@ class widgetCommentsExtComponent extends widgetCommentsComponent {
         return Promise.all(this.fetchApisDatas());
     }
 
-    loadDatas() {
+    load() {
         return this.initDatas().then(function (params) {
-            this.widgetParams = params[0];
-            this.tableParams = params[1];
-            this.commentItems = params[2];
-            return this.initTemplates();;
+            [this.widgetParams, this.tableParams, this.commentItems] = params;
+            return this.initTemplates();
         }.bind(this)).catch(err => console.error(err));
     }
 

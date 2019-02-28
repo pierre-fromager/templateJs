@@ -31,24 +31,25 @@
 		const markers = new Markers();
 
 		document.addEventListener(readyGuys, () => {
-			
+
 			markers.add('DOM Loaded');
 			markers.add('init widgetCommentsComponent');
 			new widgetCommentsComponent('#widgetCmp')
-				.setMarkers(markers)
-				.loadDatas().then(widgetInstance => {
-					widgetInstance.render().then(widgetInstance => {
+				.setMarkers(markers).load().then(widget => {
+					widget.render().then(widget => {
+						markers.add('widgetCommentsComponent rendered');
 						/* DO STUFF HERE (Ex: use a router component) */
 					}).catch(err => console.error(err))
 				}).catch(err => console.error(err));
 
 			markers.add('init widgetCommentsExtComponent');
 			new widgetCommentsExtComponent('#widgetCmpExt')
-				.setMarkers(markers)
-				.loadDatas().then(widgetInstance => {
-					widgetInstance.render().then(widgetInstance => {
+				.setMarkers(markers).load().then(widget => {
+					widget.render().then(widget => {
+						markers.add('widgetCommentsExtComponent rendered');
 						markers.show();
-						document.getElementById('elapse').innerText = 'Elapse : ' + (markers.elapse) + 'ms';
+						const elapseMsg = 'Elapse : ' + (markers.elapse) + 'ms';
+						document.getElementById('elapse').innerText = elapseMsg;
 					}).catch(err => console.error(err));
 				}).catch(err => console.error(err));
 		});

@@ -6,12 +6,12 @@ class widgetCommentsComponent {
         return this;
     }
 
-    setMarkers(markers){
+    setMarkers(markers) {
         this.markers = markers;
         return this;
     }
 
-    loadDatas() {
+    load() {
         return this.initDatas().then(instance => {
             return instance.initTemplates();
         });
