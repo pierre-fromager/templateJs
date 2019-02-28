@@ -10,45 +10,50 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="icon" href="favicon.ico">
 	<title>templateJs Demo</title>
-</head>
-
-<body>
-	<h1 id="title">TemplateJs demo</h1>
-	<hr/>
-	<div id="widgetCmp"></div>
-	<hr/>
-	<div id="widgetCmpExt"></div>
-	<hr/>
-	<div id="elapse"></div>
 	<script src="js/lib/Markers.js"></script>
 	<script src="js/lib/Template.js"></script>
 	<script src="js/lib/Api.js"></script>
 	<script src="js/components/widget.js"></script>
 	<script src="js/components/widgetext.js"></script>
+</head>
+
+<body>
+	<h1 id="title">TemplateJs demo</h1>
+	<hr />
+	<div id="widgetCmp"></div>
+	<hr />
+	<div id="widgetCmpExt"></div>
+	<hr />
+	<div id="elapse"></div>
+
 	<script>
 		const readyGuys = 'DOMContentLoaded';
-		var markers = [];
-		const tStart = new Date().getTime();
-		const addMarker = (id) => markers.push({ id, ts: new Date().getTime() });
-		const showMarkers = (tStart) => markers.forEach(mark => console.info(mark.id, '@' + (mark.ts - tStart) + 'ms'));
+		const markers = new Markers();
 
 		document.addEventListener(readyGuys, () => {
-			addMarker('DOM Loaded');
-			addMarker('init widgetCommentsComponent');
-			new widgetCommentsComponent('#widgetCmp').loadDatas().then(widgetInstance => {
-				widgetInstance.render().then(widgetInstance => {
-					/* DO STUFF HERE (Ex: use a router component) */
-				}).catch(err => console.error(err))
-			}).catch(err => console.error(err));
-			addMarker('init widgetCommentsExtComponent');
-			new widgetCommentsExtComponent('#widgetCmpExt').loadDatas().then(widgetInstance => {
-				widgetInstance.render().then(widgetInstance => {
-					showMarkers(tStart);
-					document.getElementById('elapse').innerText = 'Elapse : ' + (markers[markers.length - 1].ts - tStart) + 'ms';
+			
+			markers.add('DOM Loaded');
+			markers.add('init widgetCommentsComponent');
+			new widgetCommentsComponent('#widgetCmp')
+				.setMarkers(markers)
+				.loadDatas().then(widgetInstance => {
+					widgetInstance.render().then(widgetInstance => {
+						/* DO STUFF HERE (Ex: use a router component) */
+					}).catch(err => console.error(err))
 				}).catch(err => console.error(err));
-			}).catch(err => console.error(err));
+
+			markers.add('init widgetCommentsExtComponent');
+			new widgetCommentsExtComponent('#widgetCmpExt')
+				.setMarkers(markers)
+				.loadDatas().then(widgetInstance => {
+					widgetInstance.render().then(widgetInstance => {
+						markers.show();
+						document.getElementById('elapse').innerText = 'Elapse : ' + (markers.elapse) + 'ms';
+					}).catch(err => console.error(err));
+				}).catch(err => console.error(err));
 		});
 	</script>
+
 </body>
 
 </html>

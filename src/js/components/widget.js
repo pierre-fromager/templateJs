@@ -6,6 +6,11 @@ class widgetCommentsComponent {
         return this;
     }
 
+    setMarkers(markers){
+        this.markers = markers;
+        return this;
+    }
+
     loadDatas() {
         return this.initDatas().then(instance => {
             return instance.initTemplates();
@@ -47,19 +52,19 @@ class widgetCommentsComponent {
     render() {
         return new Promise(function (resolve, reject) {
             this.widget.load().then(function (response) {
-                addMarker('widgetLoaded');
+                this.markers.add('widgetLoaded');
                 this.widget.render(response);
-                addMarker('widgetRendered');
+                this.markers.add('widgetRendered');
                 this.table.load().then(function (response) {
-                    addMarker('tableLoaded');
+                    this.markers.add('tableLoaded');
                     this.table.render(response);
-                    addMarker('tableRendered');
+                    this.markers.add('tableRendered');
                     this.tableItems.load().then(function (response) {
-                        addMarker('tableItemsLoaded');
+                        this.markers.add('tableItemsLoaded');
                         this.tableItems.render(response);
-                        addMarker('tableItemsRendered');
+                        this.markers.add('tableItemsRendered');
                         this.widget.clean();
-                        addMarker('widgetClean');
+                        this.markers.add('widgetClean');
                         resolve(this);
                     }.bind(this)).catch(err => reject(err));
                 }.bind(this)).catch(err => reject(err))

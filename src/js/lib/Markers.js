@@ -5,16 +5,24 @@ class Markers {
     }
 
     init() {
-        this.tStart = this.now;
-        this.markers = [];
+        this.start = this.now;
+        this.marks = [];
     }
 
     add(id) {
-        this.markers.push({ id, ts: this.now });
+        this.marks.push({ id, ts: this.now });
     }
 
     show() {
-        this.markers.forEach(mark => console.info(mark.id, '@' + (mark.ts - tStart) + 'ms'));
+        this.marks.forEach(mark => console.info(
+            mark.id,
+            '@' + (mark.ts - this.start) + 'ms')
+        );
+    }
+
+    get elapse() {
+        const last = this.marks.length - 1;
+        return (this.marks[last].ts - this.start);
     }
 
     get now() {
