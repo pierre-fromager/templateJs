@@ -1,0 +1,7 @@
+{
+    "datas": {
+        "[tid=\"myWidgetHeader\"]": "Widget lazy title",
+        "[tid=\"myWidgetAside\"]": "",
+        "[tid=\"myWidgetFooter\"]": "Widget lazy footer"
+    }
+}

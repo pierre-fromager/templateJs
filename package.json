@@ -1,0 +1,23 @@
+{
+  "name": "templatejs",
+  "version": "1.0.0",
+  "description": "templateJs is a dumb front templating lib",
+  "main": "index.html",
+  "dependencies": {
+    "bootstrap3": "^3.3.5"
+  },
+  "scripts": {
+    "server": "node ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://gogs@gogs.pier-infor.fr:2222/pf.pier-infor.fr/templateJs.git"
+  },
+  "keywords": [
+    "js",
+    "template"
+  ],
+  "author": "Pierre Fromager",
+  "license": "ISC"
+}
