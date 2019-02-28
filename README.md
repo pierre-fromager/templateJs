@@ -10,7 +10,7 @@ Template demos samples can be found in src/template folder.
 Core lib can be found in src/js/Template.js.  
 Components can be found in src/js/components folder.  
 This is a dry prototyped (100 lines of code), poor but fast.  
-From the demo I've had components on a sample html page to make it easy.  
+Components are instanciated in the index page.  
 
 ## Who  
 
