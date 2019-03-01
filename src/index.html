@@ -38,6 +38,7 @@
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {
 						markers.add('widgetCommentsComponent rendered');
+						widget.mount();
 						/* DO STUFF HERE (Ex: use a router component) */
 					}).catch(err => console.error(err))
 				}).catch(err => console.error(err));
@@ -47,6 +48,7 @@
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {
 						markers.add('widgetCommentsExtComponent rendered');
+						widget.mount();
 						markers.show();
 						const elapseMsg = 'Elapse : ' + (markers.elapse) + 'ms';
 						document.getElementById('elapse').innerText = elapseMsg;

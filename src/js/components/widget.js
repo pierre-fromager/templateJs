@@ -3,6 +3,12 @@ class widgetCommentsComponent {
 
     constructor(root) {
         this.root = root;
+        const shadow = document.createElement('shadow');
+        const container = document.createElement('div');
+        const pureRoot = this.root.replace('#', '');
+        container.setAttribute('id', pureRoot);
+        shadow.appendChild(container);
+        this.container = shadow;
         return this;
     }
 
@@ -54,22 +60,33 @@ class widgetCommentsComponent {
             this.widget.load().then(function (response) {
                 this.markers.add('widgetLoaded');
                 this.widget.render(response);
+                this.widget.mount(this.container);
                 this.markers.add('widgetRendered');
                 this.table.load().then(function (response) {
                     this.markers.add('tableLoaded');
                     this.table.render(response);
+                    this.table.mount(this.container);
                     this.markers.add('tableRendered');
                     this.tableItems.load().then(function (response) {
                         this.markers.add('tableItemsLoaded');
                         this.tableItems.render(response);
+                        this.tableItems.mount(this.container);
                         this.markers.add('tableItemsRendered');
                         this.widget.clean();
                         this.markers.add('widgetClean');
                         resolve(this);
                     }.bind(this)).catch(err => reject(err));
-                }.bind(this)).catch(err => reject(err))
+                }.bind(this)).catch(err => reject(err));
             }.bind(this)).catch(err => reject(err));
         }.bind(this));
+    }
+
+    mount() {
+        const target = document.querySelector(this.root);
+        const children = this.container.querySelector(this.root).childNodes;
+        for (var i = 0; i < children.length; i++) {
+            target.appendChild(children[i].cloneNode(true));
+        }
     }
 
 }

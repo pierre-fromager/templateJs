@@ -12,7 +12,7 @@ http.createServer((request, response) => {
         filePath = Config.defaultFile;
     const extname = path.extname(filePath);
     const contentType = Mimes.extMimes[extname];
-    process.stdout.write(`${Colors.bgColors[extname]}${Colors.fgColors[extname]}.${Colors.colorReset}`);
+    process.stdout.write(`${Colors.bgColors[extname]}${Colors.fgColors[extname]}${Mimes.extLetter[extname]}${Colors.colorReset}`);
     fs.readFile(Config.basePath + filePath, (error, content) => {
         if (error) {
             if (error.code == 'ENOENT') {

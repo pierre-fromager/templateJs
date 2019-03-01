@@ -8,6 +8,7 @@ function Template(filename) {
     this.templateUriPrefix = '/templates/';
     this.templateExt = '.html';
     this.method = 'GET';
+    this.renderer = document.createElement('div');
 }
 
 Template.prototype.setTargetId = function (targetId) {
@@ -58,9 +59,23 @@ Template.prototype.hydrate = function () {
             const paramValue = itemParams[selector];
             tpl.querySelector(selector).innerText = paramValue;
         }
-        document.querySelector(this.targetId).appendChild(tpl);
+        this.renderer.appendChild(tpl);
     }
     return this;
+}
+
+Template.prototype.mount = function (targetContainer) {
+    if (targetContainer === undefined) {
+        targetContainer = document;
+    }
+    const to = targetContainer.querySelector(this.targetId);
+    this.appendChildren(this.renderer, to);
+}
+
+Template.prototype.appendChildren = function (from, to) {
+    for (var i = 0; i < from.childNodes.length; i++) {
+        to.appendChild(from.childNodes[i].cloneNode(true));
+    }
 }
 
 Template.prototype.getUrl = function () {
@@ -88,7 +103,7 @@ Template.prototype.load = function () {
 }
 
 Template.prototype.clean = function () {
-    let nodes = document.querySelector(this.targetId).querySelectorAll(":empty");
+    let nodes = this.renderer.querySelectorAll(":empty");
     nodes.forEach(node => {
         if (!node.childNodes.length) {
             let parent = node.parentNode;

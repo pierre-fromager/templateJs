@@ -8,7 +8,25 @@ const extMimes = {
     '.js': 'text/javascript',
     '.json': mimeJson,
     '': mimeJson,
-    '.ico': 'image/x-icon'
+    '.ico': 'image/x-icon',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.png': 'image/png'
 }
 
-module.exports = { extMimes }
+const extLetter = {
+    '.html': 'H',
+    '.htm': 'H',
+    '.css': 'C',
+    '.js': 'J',
+    '.json': 'O',
+    '': ' ',
+    '.ico': 'I',
+    '.jpg': 'I',
+    '.jpeg': 'I',
+    '.gif': 'I',
+    '.png': 'I'
+}
+
+module.exports = { extMimes, extLetter }
