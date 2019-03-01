@@ -12,11 +12,26 @@ Components can be found in src/js/components folder.
 This is a dry prototyped (100 lines of code), poor but fast.  
 Components are instanciated in the index page.  
 
-## Who  
+## Usage  
 
-I'm a freelancer, you can get more on [Linkedin](https://www.linkedin.com/in/pierre-fromager-197b4b6/ "My profile").  
+In order to make it easier I made a component, in fact two one extending the first.  
+This let you imbricate templates (as russian dolls) into a single container before mounting it to the DOM document.  
 
-## Whom  
+```javascript
+new widgetCommentsComponent('#widgetCmp').load().then(widget => {
+        widget.render().then(widget => {
+            widget.mount(); // mounting to #widgetCmp into document
+            /* DO STUFF HERE (Ex: use a router component) */
+        }).catch(err => console.error(err))
+    }).catch(err => console.error(err));
+```  
+In this form it makes it easy to think about middlewares, plugins and whatever.  
+
+## Whoami  
+
+Get more on [Linkedin](https://www.linkedin.com/in/pierre-fromager-197b4b6/ "My profile").  
+
+## Why  
 
 I'm using as daily front libs (React, Angular, View ) and such techs based on dom shadowing.  
 Sometimes apprehend,asimilate such technologies can take time.  
@@ -34,7 +49,7 @@ npm run server
 
 You can change settings in the server/config.js file.  
 Once server started, you can figure out from shell what kind of resource is loaded by colors.  
-On this point change colors settings in the server/colors.js file.  
+On this point change colors settings in the server folder in colors and mimes js files.  
 
 ## Dependencies  
 
