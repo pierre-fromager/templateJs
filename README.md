@@ -20,25 +20,27 @@ This let you imbricate templates (as russian dolls) into a single container befo
 ```javascript
 new widgetCommentsComponent('#widgetCmp').load().then(widget => {
         widget.render().then(widget => {
-            widget.mount(); // mounting to #widgetCmp into document
+            widget.mount(); // mounting to #widgetCmp into DOM document
             /* DO STUFF HERE (Ex: use a router component) */
         }).catch(err => console.error(err))
     }).catch(err => console.error(err));
 ```  
 In this form it makes it easy to think about middlewares, plugins and whatever.  
 
-## Whoami  
-
-Get more on [Linkedin](https://www.linkedin.com/in/pierre-fromager-197b4b6/ "My profile").  
-
 ## Why  
 
-I'm using as daily front libs (React, Angular, View ) and such techs based on dom shadowing.  
+I'm using as daily front libs (React, Angular, View) and such techs based on dom shadowing.  
+IMHO injecting html fragments as param to a function is creepy in .(j|t)sx.  
+Angular uses to dissociate that in its components.  
 Sometimes apprehend,asimilate such technologies can take time.  
 On that points I wondered if maybe I could help to make the learning curve shorter.  
-So I deciced to publish this use case.  
-For fresh people coming to js, some concepts can be murky regarding asynchronicity .  
-For them have a look at Promises usage.  
+So I published this.  
+For fresh people coming to js, some concepts can be murky regarding asynchronicity.  
+For them have a look at Promises then await/async.  
+
+## Todo  
+
+Implement unit tests.
 
 ## Facility  
 A server is available listening on default tcp port 3333, to make it run type :  
@@ -54,6 +56,16 @@ On this point change colors settings in the server folder in colors and mimes js
 ## Dependencies  
 
 Node and npm required for the demo server but no external dependency is required to run Template.js.  
+
+## Readings  
+
+* [Learn the differences between Shadow DOM and Virtual DOM](https://vuejsfeed.com/blog/learn-the-differences-between-shadow-dom-and-virtual-dom).
+* [Building a Simple Virtual DOM from Scratch](https://dev.to/ycmjason/building-a-simple-virtual-dom-from-scratch-3d05).
+
+
+## Whoami  
+
+Get more on [Linkedin](https://www.linkedin.com/in/pierre-fromager-197b4b6/ "My profile").  
 
 ## Regards  
 
