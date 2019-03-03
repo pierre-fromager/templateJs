@@ -19,5 +19,8 @@
     "template"
   ],
   "author": "Pierre Fromager",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.3.1"
+  }
 }

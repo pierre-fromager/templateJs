@@ -25,7 +25,13 @@
 	<div id="widgetCmpExt"></div>
 	<hr />
 	<div id="elapse"></div>
+	<hr />
+	<div id="unit-test">
+		<a href="test/index.html">
+			<img title="Run tests" alt="Run tests" src="node_modules/jasmine-core/images/jasmine-horizontal.png">
 
+		</a>
+	</div>
 	<script>
 		const readyGuys = 'DOMContentLoaded';
 		const markers = new Markers();
@@ -34,6 +40,7 @@
 
 			markers.add('DOM Loaded');
 			markers.add('init widgetCommentsComponent');
+
 			new widgetCommentsComponent('#widgetCmp')
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {
@@ -44,6 +51,7 @@
 				}).catch(err => console.error(err));
 
 			markers.add('init widgetCommentsExtComponent');
+
 			new widgetCommentsExtComponent('#widgetCmpExt')
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {

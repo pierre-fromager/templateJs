@@ -6,12 +6,22 @@ const Colors = require('./colors');
 const Mimes = require('./mimes');
 const Headers = require('./headers');
 
+pathRewriter = (rwpath) => {
+    rwpath = rwpath.replace('node_modules/','../node_modules/');
+    rwpath = rwpath.replace('test/js/','js/');
+    rwpath = rwpath.replace('test/css/','css/');
+    rwpath = rwpath.replace('test/','../test/');
+    rwpath = rwpath.replace('test/js/','js/');
+    return rwpath;
+}
+
 http.createServer((request, response) => {
     let filePath = '.' + request.url;
     if (filePath == './')
         filePath = Config.defaultFile;
     const extname = path.extname(filePath);
     const contentType = Mimes.extMimes[extname];
+    filePath = pathRewriter(filePath);
     process.stdout.write(`${Colors.bgColors[extname]}${Colors.fgColors[extname]}${Mimes.extLetter[extname]}${Colors.colorReset}`);
     fs.readFile(Config.basePath + filePath, (error, content) => {
         if (error) {
