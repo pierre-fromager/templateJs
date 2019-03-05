@@ -18,7 +18,7 @@ describe('Testing Lib Markers', () => {
         const markerId = 'amarker';
         markers.add(markerId);
         const firstMarker = markers.marks[0];
-        expect(firstMarker.ts).toEqual(now);
+        expect(firstMarker.ts).toBeGreaterThanOrEqual(now);
     });
 
     it('add', () => {
@@ -29,10 +29,13 @@ describe('Testing Lib Markers', () => {
         expect(firstMarker.ts).not.toBeUndefined();
         expect(firstMarker.ts).toBeGreaterThanOrEqual(now);
     });
-    
-    /*
-        it('component', () => {
-    
-    
-        });*/
+
+    it('elapse', () => {
+        const now = new Date().getTime();
+        const markerId = 'amarker';
+        markers.add(markerId);
+        const firstMarker = markers.marks[0];
+        expect(markers.elapse).not.toBeUndefined();
+        expect(markers.elapse).toBeGreaterThanOrEqual(0);
+    });
 })
