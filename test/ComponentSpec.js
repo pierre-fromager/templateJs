@@ -21,7 +21,7 @@ describe('Testing the component, this is the widget', () => {
         ];
     });
 
-    it('test0 - template', () => {
+    it('instance - properties', () => {
         
         const tpl = new Template().setTargetId(root).setParams(widgetParams);
 

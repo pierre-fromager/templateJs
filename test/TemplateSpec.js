@@ -47,10 +47,17 @@ describe('Testing lib Template', () => {
         expect(tpl.getUrl()).toEqual('/templates/widget.html');
     });
 
-    it('instance - load + response', (done) => {
+    it('instance - load', (done) => {
         tpl.setFilename(filename);
         tpl.load().then(response => {
             expect(response).not.toBeNull();
+            done();
+        });
+    });
+
+    it('instance - load - template element', (done) => {
+        tpl.setFilename(filename);
+        tpl.load().then(response => {
             const trimmedResponse = response.toString().trim();
             expect(trimmedResponse.substr(0, 1)).toEqual('<');
             expect(trimmedResponse.substr(1, 8)).toEqual('template');
@@ -67,6 +74,5 @@ describe('Testing lib Template', () => {
             done();
         });
     });
-
 
 })
