@@ -1,24 +1,38 @@
 
-
-//jasmine.
-
 describe('Testing the component, this is the widget', () => {
 
     let markers;
 
-    beforeEach(function () {
-        //jasmine.random = false;
-
-        
+    beforeEach(() => {
         markers = new Markers();
-        console.log(jasmine);
+        root = '#elementId';
+        widgetParams = {
+            '[tid="myWidgetHeader"]': 'Widget title inline',
+            '[tid="myWidgetAside"]': '',
+            '[tid="myWidgetFooter"]': 'Widget footer inline'
+        };
+        tableParams = {
+            '[tid="myTableCaption"]': 'Table caption inline'
+        };
+        commentItems = [
+            { '.commentAuthor': 'Joe', '.commentBody': 'I love this product.' },
+            { '.commentAuthor': 'Mary', '.commentBody': 'Great idea. I have got to get me one of these!' },
+            { '.commentAuthor': 'Eric', '.commentBody': 'These things are fantastic. I bought three.' }
+        ];
     });
 
     it('test0 - template', () => {
-        expect(markers).not.toBeUndefined();
-        expect(markers.start).toBeGreaterThan(0);
-        expect(markers.marks).toBeDefined();
-        expect(markers.marks).toEqual([]);
+        
+        const tpl = new Template().setTargetId(root).setParams(widgetParams);
+
+        expect(tpl).toBeDefined();
+        expect(tpl.params).toEqual(widgetParams);
+
+        /*
+    expect(markers).not.toBeUndefined();
+    expect(markers.start).toBeGreaterThan(0);
+    expect(markers.marks).toBeDefined();
+    expect(markers.marks).toEqual([]);*/
     })
 
     it('test1 - markers', () => {
@@ -46,11 +60,11 @@ describe('Testing the component, this is the widget', () => {
         expect(widget.markers).toBeUndefined();
         widget.setMarkers(markers);
         expect(widget.markers).not.toBeUndefined();
-/*
-        spyOn(widget, 'load').and.returnValue(Promise.resolve(widget));
-        
-        widget.load().then( widget => {
-            expect(widget.load).toBe.in
-        });*/
+        /*
+                spyOn(widget, 'load').and.returnValue(Promise.resolve(widget));
+                
+                widget.load().then( widget => {
+                    expect(widget.load).toBe.in
+                });*/
     })
 })

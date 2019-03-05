@@ -7,16 +7,20 @@ const Mimes = require('./mimes');
 const Headers = require('./headers');
 
 pathRewriter = (rwpath) => {
-    rwpath = rwpath.replace('node_modules/','../node_modules/');
-    rwpath = rwpath.replace('test/js/','js/');
-    rwpath = rwpath.replace('test/css/','css/');
-    rwpath = rwpath.replace('test/','../test/');
-    rwpath = rwpath.replace('test/js/','js/');
+    rwpath = rwpath.replace('node_modules/', '../node_modules/');
+    rwpath = rwpath.replace('test/js/', 'js/');
+    rwpath = rwpath.replace('test/css/', 'css/');
+    rwpath = rwpath.replace('test/', '../test/');
+    rwpath = rwpath.replace('test/js/', 'js/');
     return rwpath;
 }
 
+getPathFromUrl = (url) => {
+    return url.split("?")[0].split("#")[0];
+}
+
 http.createServer((request, response) => {
-    let filePath = '.' + request.url;
+    let filePath = '.' + getPathFromUrl(request.url);
     if (filePath == './')
         filePath = Config.defaultFile;
     const extname = path.extname(filePath);
