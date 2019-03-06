@@ -31,7 +31,6 @@ describe('Testing Lib Markers', () => {
     });
 
     it('elapse', () => {
-        const now = new Date().getTime();
         const markerId = 'amarker';
         markers.add(markerId);
         const firstMarker = markers.marks[0];

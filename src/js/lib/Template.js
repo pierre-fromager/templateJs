@@ -1,7 +1,7 @@
 
 function Template(filename) {
     this.filename = (filename) ? filename : null;
-    this.params = {};
+    this.params = null;
     this.targetId = null;
     this.response = null;
     this.container = null;
@@ -39,14 +39,12 @@ Template.prototype.parse = function () {
 }
 
 Template.prototype.render = function (response) {
-    this.setResponse(response);
-    this.parse();
-    this.hydrate();
+    this.setResponse(response).parse().hydrate();
     return this;
 }
 
 Template.prototype.hydrate = function () {
-    if (this.params === undefined) {
+    if (!this.params) {
         return this;
     }
     if (!Array.isArray(this.params)) {
