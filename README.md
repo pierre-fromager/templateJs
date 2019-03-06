@@ -7,12 +7,16 @@ templateJs is a dumb front templating lib based on the good old html template ta
 
 ## WhatIsIt  
 
-This let you build components based on templates.  
-Template demos samples can be found in src/template folder.  
+Template let you load asynchronous html code and inject variable.  
 Core lib can be found in src/js/Template.js.  
-Components can be found in src/js/components folder.  
-This is a dry prototyped (100 lines of code), poor but fast.  
-Components are instanciated in the index page.  
+This is dry (100 lines of code) and fast.  
+
+## WhatFor  
+
+Main word is 'Reuse'.  
+Introducing component, you can compose with many templates.  
+Once done, you can extends the components class regarding behaviour or whatever.  
+Components can be found in src/js/components folder and are instanciated in the index page.  
 
 ## Usage  
 
@@ -28,17 +32,6 @@ new widgetCommentsComponent('#widgetCmp').load().then(widget => {
     }).catch(err => console.error(err));
 ```  
 In this form it makes it easy to think about middlewares, plugins and whatever.  
-
-## Why  
-
-I'm using as daily front libs (React, Angular, View) and such techs based on dom shadowing.  
-IMHO injecting html fragments as param to a function is creepy in .(j|t)sx.  
-Angular uses to dissociate that in its components.  
-Sometimes apprehend,asimilate such technologies can take time.  
-On that points I wondered if maybe I could help to make the learning curve shorter.  
-So I published this.  
-For fresh people coming to js, some concepts can be murky regarding asynchronicity.  
-For them have a look at Promises then await/async.  
 
 ## Facility  
 A server is available listening on default tcp port 3333, to make it run type :  
