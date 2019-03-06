@@ -38,9 +38,9 @@ So I published this.
 For fresh people coming to js, some concepts can be murky regarding asynchronicity.  
 For them have a look at Promises then await/async.  
 
-## Todo  
+## Tests  
 
-Implement unit tests.
+All libs and components tested with jasmine.
 
 ## Facility  
 A server is available listening on default tcp port 3333, to make it run type :  
