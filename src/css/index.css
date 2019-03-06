@@ -21,13 +21,22 @@
   border: 1px solid;
 }
 
+#logo {
+  display: block;
+  position: fixed;
+  top: 1.5em;
+  right: 1em;
+  float: right;
+  width: 10%;
+}
+
 #unittest > ul li a:hover {
   background-color: #d3d3d3;
   border-color: #666 #dcdcdc #dcdcdc #666;
 }
 
 #title::after {
-  content: "Vanilla is good !!";
+  content: "";
   font-size: 0.5em;
   float: right;
   line-height: 2em;

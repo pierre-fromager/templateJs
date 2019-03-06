@@ -1,4 +1,6 @@
-# templateJs  
+![TemplateJsLogo](src/img/logo.png)
+
+# ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `templateJs`
 
 ## Description  
 templateJs is a dumb front templating lib based on the good old html template tag.  
