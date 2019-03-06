@@ -133,4 +133,4 @@ describe('Lib Template - widget', () => {
             });
     });
 
-})
+});
