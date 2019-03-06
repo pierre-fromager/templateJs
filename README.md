@@ -38,10 +38,6 @@ So I published this.
 For fresh people coming to js, some concepts can be murky regarding asynchronicity.  
 For them have a look at Promises then await/async.  
 
-## Tests  
-
-All libs and components tested with jasmine.
-
 ## Facility  
 A server is available listening on default tcp port 3333, to make it run type :  
 
@@ -52,6 +48,11 @@ npm run server
 You can change settings in the server/config.js file.  
 Once server started, you can figure out from shell what kind of resource is loaded by colors.  
 On this point change colors settings in the server folder in colors and mimes js files.  
+
+## Tests  
+
+All libs and components are tested with jasmine.  
+Tests can be found in the root test folder and can be played online through UI.  
 
 ## Dependencies  
 
