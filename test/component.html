@@ -19,8 +19,10 @@
 			display: none;
 		}
 
-		.jasmine_html-reporter {
-			min-height: 640px;
+		/* We hide target */
+
+		#elementId {
+			display: none;
 		}
 	</style>
 	<script>
@@ -42,11 +44,13 @@
 				}
 			};
 			jasmine.getEnv().addReporter(myReporter);
+			jasmine.DEFAULT_TIMEOUT_INTERVAL = 200; // ms
 		});
 	</script>
 </head>
 
 <body>
+	<div id="elementId"></div>
 </body>
 
 </html>

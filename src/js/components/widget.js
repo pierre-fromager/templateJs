@@ -2,7 +2,7 @@
 class widgetCommentsComponent {
 
     constructor(root) {
-        this.root = root;
+        this.root = (root) ? root : '';
         const shadow = document.createElement('shadow');
         const container = document.createElement('div');
         const pureRoot = this.root.replace('#', '');
@@ -24,7 +24,7 @@ class widgetCommentsComponent {
     }
 
     initDatas() {
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
             this.widgetParams = {
                 '[tid="myWidgetHeader"]': 'Widget title inline',
                 '[tid="myWidgetAside"]': '',
@@ -39,7 +39,9 @@ class widgetCommentsComponent {
                 { '.commentAuthor': 'Eric', '.commentBody': 'These things are fantastic. I bought three.' }
             ];
             resolve(this);
-        }.bind(this));
+        }.bind(this)).catch(() => {
+            reject({ status: 'error', msg: 'initDatas failed' });
+        });
     }
 
     initTemplates() {
