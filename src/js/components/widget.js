@@ -3,12 +3,18 @@ class widgetCommentsComponent {
 
     constructor(root) {
         this.root = (root) ? root : '';
+        this.server = null;
         const shadow = document.createElement('shadow');
         const container = document.createElement('div');
         const pureRoot = this.root.replace('#', '');
         container.setAttribute('id', pureRoot);
         shadow.appendChild(container);
         this.container = shadow;
+        return this;
+    }
+
+    setServer(server) {
+        this.server = server;
         return this;
     }
 

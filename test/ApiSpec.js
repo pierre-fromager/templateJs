@@ -4,6 +4,7 @@ describe('Lib Api', () => {
     beforeEach(() => {
         endpoint = 'widget';
         badEp = 'bananas';
+        defaultServer = 'http://0.0.0.0:3333';
     });
 
     it('properties', () => {
@@ -12,14 +13,22 @@ describe('Lib Api', () => {
         expect(apiWithoutEp.ext).toEqual('.json');
         expect(apiWithoutEp.method).toEqual('GET');
         expect(apiWithoutEp.endpoint).toBeUndefined();
+        expect(apiWithoutEp.server).not.toBeUndefined();
+        expect(apiWithoutEp.server).toEqual(defaultServer);
         const apiWithEp = new Api(endpoint);
         expect(apiWithEp.endpoint).toEqual(endpoint);
+    });
+
+    it('setServer', () => {
+        const api = new Api(endpoint).setServer('http://localhost:3333');
+        expect(api.server).not.toEqual(defaultServer);
+        expect(api.server).toEqual(api.server);
     });
 
     it('getUrl', () => {
         const api = new Api(endpoint);
         expect(api.getUrl()).not.toEqual('');
-        expect(api.getUrl()).toEqual(api.path + endpoint + api.ext);
+        expect(api.getUrl()).toEqual(api.server + api.path + endpoint + api.ext);
     });
 
     it('load - good response', (done) => {

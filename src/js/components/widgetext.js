@@ -19,9 +19,9 @@ class widgetCommentsExtComponent extends widgetCommentsComponent {
 
     fetchApisDatas() {
         return [
-            new Api('widget').load(),
-            new Api('table').load(),
-            new Api('comments').load(),
+            new Api('widget').setServer(this.server).load(),
+            new Api('table').setServer(this.server).load(),
+            new Api('comments').setServer(this.server).load(),
         ];
     }
 

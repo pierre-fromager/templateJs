@@ -41,6 +41,7 @@
 	<script>
 		const readyGuys = 'DOMContentLoaded';
 		const markers = new Markers();
+		const server = 'http://0.0.0.0:3333';
 
 		document.addEventListener(readyGuys, () => {
 
@@ -48,6 +49,7 @@
 			markers.add('init widgetCommentsComponent');
 
 			new widgetCommentsComponent('#widgetCmp')
+				.setServer(server)
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {
 						markers.add('widgetCommentsComponent rendered');
@@ -59,6 +61,7 @@
 			markers.add('init widgetCommentsExtComponent');
 
 			new widgetCommentsExtComponent('#widgetCmpExt')
+				.setServer(server)
 				.setMarkers(markers).load().then(widget => {
 					widget.render().then(widget => {
 						markers.add('widgetCommentsExtComponent rendered');
